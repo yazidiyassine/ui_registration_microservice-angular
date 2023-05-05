@@ -20,6 +20,14 @@ export class UserService {
     return this.httpclient.post(this.PATH_OF_API + "/authenticate", loginData, { headers: this.requestHeader });
   }
 
+  public forStudent(){
+    return this.httpclient.get(this.PATH_OF_API+ '/forStudent',{ responseType: 'text'})
+  }
+
+  public forAdmin(){
+    return this.httpclient.get(this.PATH_OF_API+ '/forAdmin',{ responseType: 'text'})
+  }
+
   public register(registerData: any) {
     return this.httpclient.post(this.PATH_OF_API + "/registerNewUser", registerData, { headers: this.requestHeader });
   }

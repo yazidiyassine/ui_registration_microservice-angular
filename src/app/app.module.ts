@@ -10,12 +10,13 @@ import { HeaderComponent } from './header/header.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 import { FormsModule } from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { StudentComponent } from './student/student.component';
-import { authGuard } from './auth/auth.guard';
+import { CanActivateFn, Router } from '@angular/router';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserService } from './services/user.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -35,12 +36,13 @@ import { UserService } from './services/user.service';
     RouterModule
   ],
   providers: [
-     /*  authGuard,{
+    AuthGuard,
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
     },
-    UserService */
+    UserService
   ],
   bootstrap: [AppComponent]
 })
