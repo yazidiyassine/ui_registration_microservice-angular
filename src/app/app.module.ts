@@ -8,6 +8,10 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
+import { RouterModule } from '@angular/router';
 import { StudentComponent } from './student/student.component';
 
 @NgModule({
@@ -22,7 +26,10 @@ import { StudentComponent } from './student/student.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
