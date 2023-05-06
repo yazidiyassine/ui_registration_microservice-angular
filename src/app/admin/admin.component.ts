@@ -16,7 +16,7 @@ export class AdminComponent {
 
   userUpdated = {
     apogee: 0,
-    userName: "",
+    userName:  "",
     userFirstName: "",
     userLastName: "",
     userPassword: ""
@@ -43,8 +43,7 @@ export class AdminComponent {
       }
     });
   }
-
-  updateUser(user: any): void {
+  updateUser(): void {
     this.userService.updateUser(this.userUpdated).subscribe({
       next: () => {
         this.getUsers();
