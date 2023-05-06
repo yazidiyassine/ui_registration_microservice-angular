@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {NgForm} from '@angular/forms'
 import { UserService } from '../services/user.service';
 import { UserAuthService } from '../services/user-auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +11,24 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private userService: UserService, private userAuthService: UserAuthService,
-    private router:Router){
+  registered: boolean = false;
+  showSuccessMessage: boolean = true;
+  showErrorMessage: boolean = false;
+  errorMessage: string = '';
 
+  constructor(private userService: UserService, private userAuthService: UserAuthService,
+    private router:Router, private route: ActivatedRoute){
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.registered = params['registered'] === 'true';
+      if (this.registered) {
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+        }, 10000);
+      }
+    });
   }
 
   login(loginForm: NgForm){
@@ -32,7 +47,10 @@ export class LoginComponent {
       },
       (error) => {
         console.log(error);
+        this.errorMessage = 'Une erreur est survenue. Essayez plus tard.';
+        this.showErrorMessage = true;
       }
     );
   }
+
 }

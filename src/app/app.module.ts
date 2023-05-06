@@ -17,6 +17,7 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './auth/auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthGuard } from './auth/auth.guard';
     LoginComponent,
     HeaderComponent,
     ForbiddenComponent,
-    StudentComponent
+    StudentComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

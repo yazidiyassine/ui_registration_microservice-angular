@@ -6,7 +6,7 @@
           <div class="form-group">
             <label for="userName" class="mb-2">Email</label>
             <div class="input-group">
-              <input type="text" class="form-control rounded-0 border-left-0" id="userName" name="userName" placeholder="Enter your email or phone" ngModel>
+              <input type="text" class="form-control rounded-0 border-left-0" id="userName" name="userName" placeholder="Entrez votre email" ngModel>
               <div class="input-group-append">
                 <span class="input-group-text bg-white border-0"><i class="fas fa-envelope"></i></span>
               </div>
@@ -15,19 +15,25 @@
           <div class="form-group">
             <label for="userPassword" class="mb-2">Mot de passe</label>
             <div class="input-group">
-              <input type="password" class="form-control rounded-0 border-left-0" id="userPassword" name="userPassword" placeholder="Enter your password" ngModel>
+              <input type="password" class="form-control rounded-0 border-left-0" id="userPassword" name="userPassword" placeholder="Entrez votre mot de passe" ngModel>
               <div class="input-group-append">
                 <span class="input-group-text bg-white border-0"><i class="fas fa-lock"></i></span>
               </div>
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary btn-block rounded-0 mt-4">S'identifer</button>
+            <button type="submit" class="btn btn-primary btn-block rounded-0 mt-4">S'identifier</button>
           </div>
           <div class="text-center mt-3">
-            <a href="#">Mot de passe oublié?</a>
+            <a href="/register">Nouvel utilisateur?</a>
           </div>
         </form>
+        <div class="alert alert-success" role="alert" *ngIf="showSuccessMessage">
+          Vous êtes bien enregister, vous pouvez maintenant vous connecter!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="showErrorMessage">
+          {{errorMessage}}
+        </div>
       </div>
     </div>
   </div>

@@ -6,9 +6,11 @@ import { StudentComponent } from './student/student.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './auth/auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ['ADMIN']} },
   {path: 'student', component: StudentComponent,  canActivate: [AuthGuard], data: {roles: ['STUDENT']} },
   {path: 'login', component: LoginComponent},
