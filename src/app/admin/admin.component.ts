@@ -15,7 +15,7 @@ export class AdminComponent {
   userDetails: any[] = [];
 
   userUpdated = {
-    apogee: 0,
+    id: 0,
     userName:  "",
     userFirstName: "",
     userLastName: "",

@@ -1,13 +1,5 @@
 <div class="container mt-5">
   <div class="card text-center" style="padding: 20px;">
     <h1>Ceci est la page d'accueil</h1>
-    <ng-container *ngIf="isLoggedIn()">
-      <ng-container *ngIf="userService.roleMatch(['ADMIN'])">
-        <a class="btn btn-primary" routerLink="/admin">Aller à l'espace administrateur</a>
-      </ng-container>
-      <ng-container *ngIf="userService.roleMatch(['STUDENT'])">
-        <a class="btn btn-primary" routerLink="/student">Aller à l'espace étudiant</a>
-      </ng-container>
-    </ng-container>
   </div>
 </div>
