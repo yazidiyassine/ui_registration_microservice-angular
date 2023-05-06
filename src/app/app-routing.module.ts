@@ -14,7 +14,9 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ['ADMIN']} },
   {path: 'student', component: StudentComponent,  canActivate: [AuthGuard], data: {roles: ['STUDENT']} },
   {path: 'login', component: LoginComponent},
-  {path: 'forbidden', component: ForbiddenComponent}
+  {path: 'forbidden', component: ForbiddenComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'}, // default path
+  {path: '**', redirectTo: '/home'} // wildcard path
 ];
 
 @NgModule({
