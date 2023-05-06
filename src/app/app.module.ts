@@ -36,7 +36,6 @@ import { AuthGuard } from './auth/auth.guard';
     RouterModule
   ],
   providers: [
-    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
