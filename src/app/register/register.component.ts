@@ -13,7 +13,7 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) {
   }
 
-  register(registerForm: NgForm){
+  register(registerForm: NgForm) {
     this.userService.register(registerForm.value).subscribe({
       next: () => {
         registerForm.reset();
@@ -24,4 +24,5 @@ export class RegisterComponent {
       }
     });
   }
+
 }

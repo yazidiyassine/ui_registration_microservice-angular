@@ -15,7 +15,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/home"
-            >Acceuil</a
+            >Accueil</a
           >
         </li>
         <li class="nav-item">
@@ -37,11 +37,11 @@
           >
         </li>
       </ul>
-      <div class="d-flex">
+      <div class="d-flex align-items-center">
         <button
           *ngIf="!isLoggedIn()"
           type="button"
-          class="btn btn-success me-2"
+          class="btn btn-primary me-2"
           routerLink="/login"
         >
           S'authentifier
@@ -49,7 +49,7 @@
         <button
           *ngIf="isLoggedIn()"
           type="button"
-          class="btn btn-danger"
+          class="btn btn-outline-danger"
           (click)="logout()"
         >
           Se déconnecter

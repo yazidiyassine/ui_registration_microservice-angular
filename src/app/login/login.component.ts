@@ -12,8 +12,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent {
 
   registered: boolean = false;
-  showSuccessMessage: boolean = true;
+  showSuccessMessage: boolean = false;
   showErrorMessage: boolean = false;
+  successMessage: string ='';
   errorMessage: string = '';
 
   constructor(private userService: UserService, private userAuthService: UserAuthService,
@@ -24,9 +25,11 @@ export class LoginComponent {
     this.route.queryParams.subscribe(params => {
       this.registered = params['registered'] === 'true';
       if (this.registered) {
+        this.showSuccessMessage = true;
+        this.successMessage='Vous vous êtes inscrit avec succès, vous pouvez maintenant vous connecter !';
         setTimeout(() => {
           this.showSuccessMessage = false;
-        }, 10000);
+        }, 5000);
       }
     });
   }

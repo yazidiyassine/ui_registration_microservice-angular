@@ -1,10 +1,10 @@
-<div class="container mt-5">
+<div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-lg-4">
-      <div class="card p-4 border rounded-0">
+      <div class="card p-4 border rounded-0 shadow-sm">
         <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
           <div class="form-group">
-            <label for="userName" class="mb-2">Email</label>
+            <label for="userName" class="form-label mb-2">Email</label>
             <div class="input-group">
               <input type="text" #userName (ngModule)="userName" class="form-control rounded-0 border-left-0" id="userName" name="userName" placeholder="Entrez votre email" ngModel>
               <div class="input-group-append">
@@ -14,26 +14,27 @@
           </div>
 
           <div class="form-group">
-            <label for="userFirstName" class="mb-2">Prénom</label>
+            <label for="userFirstName" class="form-label mb-2">Prénom</label>
             <div class="input-group">
               <input type="text" #userFirstName (ngModule)="userFirstName" class="form-control rounded-0 border-left-0" id="userFirstName" name="userFirstName" placeholder="Entrez votre prénom" ngModel>
               <div class="input-group-append">
-                <span class="input-group-text bg-white border-0"><i class="fas fa-envelope"></i></span>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="userLastName" class="mb-2">Nom</label>
-            <div class="input-group">
-              <input type="text" #userLastName (ngModule)="userLastName" class="form-control rounded-0 border-left-0" id="userLastName" name="userLastName" placeholder="Entrez votre nom de famille" ngModel>
-              <div class="input-group-append">
-                <span class="input-group-text bg-white border-0"><i class="fas fa-envelope"></i></span>
+                <span class="input-group-text bg-white border-0"><i class="fas fa-user"></i></span>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="userPassword" class="mb-2">Mot de passe</label>
+            <label for="userLastName" class="form-label mb-2">Nom</label>
+            <div class="input-group">
+              <input type="text" #userLastName (ngModule)="userLastName" class="form-control rounded-0 border-left-0" id="userLastName" name="userLastName" placeholder="Entrez votre nom de famille" ngModel>
+              <div class="input-group-append">
+                <span class="input-group-text bg-white border-0"><i class="fas fa-user"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="userPassword" class="form-label mb-2">Mot de passe</label>
             <div class="input-group">
               <input type="password" #userPassword (ngModule)="userPassword" class="form-control rounded-0 border-left-0" id="userPassword" name="userPassword" placeholder="Entrez votre mot de passe" ngModel>
               <div class="input-group-append">
@@ -41,11 +42,14 @@
               </div>
             </div>
           </div>
+
           <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-primary btn-block rounded-0 mt-4">Enregistrer</button>
           </div>
+
           <div class="text-center mt-3">
-            <a href="/login">Déjà utilisateur?</a>
+            <p>Déjà utilisateur?</p>
+            <a href="/login" class="btn btn-link">Se connecter</a>
           </div>
         </form>
       </div>
