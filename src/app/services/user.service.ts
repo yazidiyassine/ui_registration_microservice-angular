@@ -13,6 +13,10 @@ export class UserService {
     { "No-Auth": "True" }
   );
 
+  reqHdr = new HttpHeaders(
+    { "Authorization": "Bearer " + this.userAuthService.getToken() }
+  );
+
   constructor(private httpclient: HttpClient,
     private userAuthService: UserAuthService) { }
 
@@ -20,12 +24,12 @@ export class UserService {
     return this.httpclient.post(this.PATH_OF_API + "/authenticate", loginData, { headers: this.requestHeader });
   }
 
-  public forStudent(){
-    return this.httpclient.get(this.PATH_OF_API+ '/forStudent',{ responseType: 'text'})
+  public forStudent() {
+    return this.httpclient.get(this.PATH_OF_API + '/forStudent', { responseType: 'text' })
   }
 
-  public forAdmin(){
-    return this.httpclient.get(this.PATH_OF_API+ '/forAdmin',{ responseType: 'text'})
+  public forAdmin() {
+    return this.httpclient.get(this.PATH_OF_API + '/forAdmin', { responseType: 'text' })
   }
 
   public register(registerData: any) {
@@ -49,6 +53,18 @@ export class UserService {
       }
     }
     return false;
+  }
+
+  public getUsers() {
+    return this.httpclient.get(this.PATH_OF_API + '/getUsers', { headers: this.reqHdr });
+  }
+
+  public deleteUser(id: number) {
+    return this.httpclient.delete(this.PATH_OF_API + '/deleteUser?id=' + id, { headers: this.reqHdr });
+  }
+
+  public updateUser(user: any){
+    return this.httpclient.put(this.PATH_OF_API + '/updateUser', user, { headers: this.reqHdr });
   }
 }
 

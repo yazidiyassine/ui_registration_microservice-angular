@@ -1,5 +1,119 @@
-<div class="container mt-5">
-  <div class="card text-center" style="padding: 20[x]; color: rgb(0, 195, 255);">
-    <h1>Ceci est la page administrateur</h1>
+<div class="container-fluid mt-5">
+  <div class="card shadow p-3 mb-5 bg-white rounded">
+    <h2 class="card-header bg-warning text-white text-center">Liste des Utilisateurs</h2>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Apogée</th>
+              <th>Email</th>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userDetails">
+              <td>{{ user.apogee }}</td>
+              <td>{{ user.userName }}</td>
+              <td>{{ user.userFirstName }}</td>
+              <td>{{ user.userLastName }}</td>
+              <td>
+                <button type="button" class="btn btn-primary me-2" (click)="openUpdateModal(content, user)">
+                  <i class="bi bi-pencil-fill"></i>
+                  Modifier
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deleteUser(user.apogee)">
+                  <i class="bi bi-trash-fill"></i>
+                  Supprimer
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- Update Modal -->
+<ng-template #updateModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modifier l'utilisateur</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="apogee">Apogée:</label>
+        <input type="text" class="form-control" id="apogee" [value]="userUpdated.apogee" (input)="userUpdated.apogee=$event.target.value">
+      </div>
+      <div class="form-group">
+        <label for="userName">Email:</label>
+        <input type="email" class="form-control" id="userName" [value]="userUpdated.userName" (input)="userUpdated.userName=$event.target.value">
+      </div>
+      <div class="form-group">
+        <label for="userFirstName">Prénom:</label>
+        <input type="text" class="form-control" id="userFirstName" [value]="userUpdated.userFirstName" (input)="userUpdated.userFirstName=$event.target.value">
+      </div>
+      <div class="form-group">
+        <label for="userLastName">Nom:</label>
+        <input type="text" class="form-control" id="userLastName" [value]="userUpdated.userLastName" (input)="userUpdated.userLastName=$event.target.value">
+      </div>
+      <div class="form-group">
+        <label for="userPassword">Mot de passe:</label>
+        <input type="password" class="form-control" id="userPassword" [value]="userUpdated.userPassword" (input)="userUpdated.userPassword=$event.target.value">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Annuler</button>
+    <button type="button" class="btn btn-primary" (click)="updateUser()">Enregistrer les modifications</button>
+  </div>
+</ng-template>
+
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="updateUser(userUpdated)">
+          <div class="form-group">
+            <label for="userName">Email :</label>
+            <input type="text" disabled #apogee [(ngModel)]="userUpdated.apogee" name="apogee" id="apogee"
+              class="form-control" placeholder="l'email">
+          </div>
+          <div class="form-group">
+            <label for="userFirstName">Student Name :</label>
+            <input type="text" #userFirstName [(ngModel)]="userUpdated.userFirstName" name="userFirstName" id="userFirstName" class="form-control"
+              placeholder="Prénom">
+          </div>
+          <div class="form-group">
+            <label for="userLastName">Student Address :</label>
+            <input type="text" #userLastName [(ngModel)]="userUpdated.userLastName" name="userLastName" id="userLastName"
+              class="form-control" placeholder="Nom">
+          </div>
+          <div class="form-group">
+            <label for="userPassword">Nouveau mot de passe:</label>
+            <input type="password" #userPassword [(ngModel)]="userUpdated.userPassword" name="userPassword" id="userPassword"
+              class="form-control" placeholder="Mot de passe">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-primary w-100">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
